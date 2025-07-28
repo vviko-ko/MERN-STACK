@@ -23,7 +23,7 @@ app.post("/products",async (req,res) => {
       res.status(201).json({success: true, data: newProduct});
     });
  
-app.use("/products",productRoutes);  
+app.use("/api/products",productRoutes);  
 
 app.listen(3000, () => {
     connectDB()

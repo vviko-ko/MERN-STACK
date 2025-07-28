@@ -1,4 +1,6 @@
 import express from 'express';
+import mongoose from 'mongoose';
+import Product from '../Models/products.model.js';
 
 const router = express.Router();
 router.get("/", async(req, res) => {
