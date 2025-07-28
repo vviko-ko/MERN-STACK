@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import { connectDB } from "./config/db.js";
+import productRoutes from "./routes/product.routes.js";
 
 dotenv.config()
 
@@ -15,14 +16,14 @@ app.post("/products",async (req,res) => {
     }
     const newProduct = new Product(product);
     try{
-      await newProduct.save();
+      await newProduct.save();}
       catch (error) {
         return res.status(500).json({success: false, message: error.message});
       }
       res.status(201).json({success: true, data: newProduct});
-    }
-})
-
+    });
+ 
+app.use("/products",productRoutes);  
 
 app.listen(3000, () => {
     connectDB()
